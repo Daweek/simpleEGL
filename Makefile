@@ -10,17 +10,13 @@ CUDA_SDK	= $(CUDA)/samples
 NVCC     	= $(CUDA)/bin/nvcc
 
 #Include Paths
-CUDAINC   = -I. 
-INCQT			= -I/usr/include/x86_64-linux-gnu/qt5/
 
-INC = -I$(HOME)/graphics/NumCpp/NumCpp/include -Iglew/include
+INC = -I$(HOME)/graphics/NumCpp/NumCpp/include -Iglew/include -Istb 
 #Library Paths
 CUDALIB		= -L/usr/lib/x86_64-linux-gnu -L$(CUDA)/lib64 \
 						-lcuda -lcudart -lcudadevrt
 GLLIB  		=  -lEGL -lGLEW  -lOpenGL 
-QTLIB			= -lQt5Core
-OTHERLIB	= -lfreeimage -lstdc++fs 
-LIB 			= -Lglew/lib  $(GLLIB) -lm -lstb
+LIB 			= -Lglew/lib  $(GLLIB) -lm
 
 ################ Choosing architecture code for GPU ############################
 NVCC_ARCH			=

@@ -23,8 +23,8 @@
 //#include <glm/glm.hpp>
 using namespace std;
 
-#include <stb/stb_image.h>
-#include <stb/stb_image_write.h>
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image_write.h"
 
 //include <shader.hpp>
 static const EGLint configAttribs[] = {
@@ -109,42 +109,7 @@ int main(int argc, char *argv[])
   // from now on use your OpenGL context
   int width = 512;
   int height = 512; 
-  #if 0  
-  const float ar = (float) width / (float) height;
-
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glColor3f(1.0f, 1.0f, 0.0f);
-  glViewport(0,0,width,height);
   
-  //glMatrixMode(GL_PROJECTION);
-  //glLoadIdentity();
-  //glOrtho(0.0, width, height, 0.0, -1.0, 1.0);
-
-  
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  glFrustum(-ar, ar, -ar, ar, 10.0, 9.0);
-  glMatrixMode(GL_PROJECTION);
-  //gluOrtho2D(0,400,0,500);
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity() ;
-
-
-  glBegin(GL_QUADS);
-        glColor3d(1,0,0);
-        glVertex3f(-1,-1,-10);
-        glColor3d(1,1,0);
-        glVertex3f(1,-1,-10);
-        glColor3d(1,1,1);
-        glVertex3f(1,1,-10);
-        glColor3d(0,1,1);
-        glVertex3f(-1,1,-10);
-  glEnd();
-  
- 
-  glFlush();
-  
-  #else
   glClearColor(0.5f, 0.5f, 0.0f, 1.0f);
 
   cout<<"Here is the bug"<<endl;  
@@ -198,25 +163,7 @@ int main(int argc, char *argv[])
 	  glDeleteProgram(programID);
 
     glFlush();
-    #endif
-    
-		// Swap buffers
-	//	glfwSwapBuffers(window);
-	//	glfwPollEvents();
-  
-	//} // Check if the ESC key was pressed or the window was closed
-	//while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
-	//	   glfwWindowShouldClose(window) == 0 );
-
-	// Cleanup VBO
-	
-
-	// Close OpenGL window and terminate GLFW
-	//glfwTerminate();
-  
-  
-  
-  
+   
   GLubyte *m_glFrameBuffer = (GLubyte*) malloc ( 3 * sizeof(GLubyte) * width * height);
 
   std::string fileimg = "test.png";

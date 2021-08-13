@@ -25,6 +25,7 @@
 *.la
 
 # Executables
+egl
 *.exe
 *.out
 *.app:w
